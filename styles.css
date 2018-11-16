@@ -1,59 +1,26 @@
-/* body{
-  background-color: black;
+@font-face {
+  font-family: 'Pixel Font';
+  src: url('pixelFont.ttf') format('truetype');
 }
-
-#game-container{
-  position: absolute;
-} */
-
-/* #history-container{
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  overflow: hidden;
-  height: 0;
-  padding-top: 56.25%;
-  transform: translateY(-50%);
-  background-color: #303030;
-} */
-
-/* .history-image{
-  position: absolute;
-  width: 70%;
-  top: 5%;
-  left: 50%;
-  height: 0;
-  padding-top: 36.25%;
-  transform: translateX(-50%);
-  background-color: #757474;
-}
-
-.history-actions{
-  position: absolute;
-  width: 100%;
-  height: calc(30vh - 50px);
-  bottom: 10px;
-  color: white;
-}
-
-.history-button{
-  background-color: #eaeaea;
-  width: 100px;
-  height: 100px;
-  margin: 10px;
-} */
-
 
 body {
   background: black;
-  /* padding: 20px; */
+  font-family: 'Pixel Font', sans-serif;
 }
 
-.very-specific-design {
+#game-window{
+  /* padding: 20px; */
+  resize: both;
+  position: relative;
+  background: black;
+  height: 100vh;
+  width: 100vw;
+}
+
+#game-container {
   width: 1920px;
   height: 1080px;
-  padding: 50px;
+  /* padding: 50px; */
   text-align: center;
   background: white;
   position: relative;
@@ -65,25 +32,66 @@ body {
           transform-origin: center center;
 }
 
-.scaleable-wrapper {
-  /* padding: 20px; */
-  resize: both;
+#history-container{
   position: relative;
-  background: black;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
+  background-color: black;
 }
 
-.ui-resizable-se {
-  width: 10px;
-  height: 10px;
-  background: orange;
+.history-image{
   position: absolute;
-  bottom: 0;
-  right: 0;
+  width: 1239px;
+  left: 50%;
+  height: 700px;
+  top: 50px;
+  transform: translateX(-50%);
 }
 
-.bigred {
-  color: red;
-  font-size: 5rem;
+
+.history-actions{
+  position: absolute;
+  width: 100%;
+  height: 320px;
+  bottom: 0;
+  color: white;
+  font-size: 48px;
+}
+
+.history-button{
+  margin: 20px;
+}
+
+.history-button{
+  cursor: pointer;
+}
+
+
+
+.opacity-0{
+  opacity: 0;
+}
+
+.history-slide{
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.5s, opacity 0.5s ease;
+}
+
+.history-slide.active{
+  visibility: visible;
+  opacity: 1;
+}
+
+.visibility-hidden{
+  visibility: hidden;
+}
+
+.slide-btn{
+  width: 200px !important;
+  min-width: 200px;
+}
+
+.rotate-180{
+  transform: rotate(180deg);
 }
