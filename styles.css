@@ -36,7 +36,10 @@ body {
   position: relative;
   height: 100%;
   width: 100%;
-  background: white;
+}
+
+#history-container{
+  background: black;
 }
 
 .history-image{
@@ -100,6 +103,7 @@ body {
 
 #gameplay-container{
   color: #0C0646;
+  background: white;
 }
 
 

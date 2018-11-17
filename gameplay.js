@@ -2,7 +2,7 @@ let clickSound;
 let daySpeed = 900;
 
 let userAccount = 500;
-let userBalance = 10;
+let userBalance = 2;
 
 let currentDate = "1 апреля"; // дата в виде текста, для написания в игровом интерфейсе
 let currentDayInDate = 0; // номер дня в дате
@@ -17,14 +17,15 @@ let currentMonthCount = 0; // порядковый номер текущего �
 let daysTotal = 183; // кол-во дней всего
 let eventOpened = false;
 
-var gameTimeHandler = window.setTimeout(function() {
-    gameTime(currentDayCount);
-},daySpeed);
+let gameTimeHandler;
 
 let logsJson;
 let eventsArray;
 
 function initGameplay(){
+  gameTimeHandler = window.setTimeout(function() {
+      gameTime(currentDayCount);
+  },daySpeed);
   $.getJSON( "json/logs.json", function( json ) {
     logsJson = json;
   })
@@ -100,16 +101,16 @@ function newDay(day) {
     }, daySpeed);
 }
 
-$(document).ready(function(){
-  $('body').on('click', '.logout-btn', function(){
-    console.log('click pause');
-    window.clearTimeout(gameTimeHandler);
-  });
-  $('body').on('click', '.help-btn', function(){
-    console.log('click continue');
-    gameTime(currentDayCount);
-  });
-})
+
+$('body').on('click', '.logout-btn', function(){
+  console.log('click pause');
+  window.clearTimeout(gameTimeHandler);
+});
+$('body').on('click', '.help-btn', function(){
+  console.log('click continue');
+  gameTime(currentDayCount);
+});
+
 
 
 function generatePassiveOutcome(){

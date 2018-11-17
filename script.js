@@ -4,15 +4,15 @@ let elWidth = $el.outerWidth();
 let prestoryJson = {};
 let currentScreen = 'prestory';
 let currentSlideNumber = 0;
-// var timeoutHandleToNextSlide = window.setTimeout(function() {
-//     changeSlide($(".history-slide.active"), currentSlideNumber+1);
-// },5000);
+var timeoutHandleToNextSlide = window.setTimeout(function() {
+    changeSlide($(".history-slide.active"), currentSlideNumber+1);
+},5000);
 
 $( document ).ready(function() {
     console.log( "ready!" );
     initResizeGameArea();
-    // initPrestory();
-    initGameplay();
+    initPrestory();
+    // initGameplay();
 });
 
 $( window ).resize(function() {
@@ -49,7 +49,7 @@ function initPrestory(){
                       <p class="mb-0 ml-5">`+v.text+`</p>
                     </div>
                     <div class="history-button next-slide-btn" target-slide="`+ nextSlide +`">
-                      <img src="slide btn.png" class="img-fluid slide-btn">
+                      <img src="img/elements/slide btn.png" class="img-fluid slide-btn">
                     </div>
                   </div>
                 </div>`
@@ -59,13 +59,13 @@ function initPrestory(){
                   <div class="history-image" style="background-image: url('img/bg/summer.gif'); background-size:cover; background-position: center;"></div>
                   <div class="history-actions d-flex flex-row align-items-center justify-content-between">
                     <div class="history-button prev-slide-btn" target-slide="`+ prevSlide +`">
-                      <img src="slide btn.png" class="img-fluid slide-btn rotate-180">
+                      <img src="img/elements/slide btn.png" class="img-fluid slide-btn rotate-180">
                     </div>
                     <div class="history-text text-center">
                       <p class="mb-0 mx-5">`+v.text+`</p>
                     </div>
-                    <div class="history-button next-slide-btn" target-slide="startGame">
-                      <img src="go.png" class="img-fluid slide-btn">
+                    <div class="history-button next-slide-btn" target-slide="`+json.prestory.length+`">
+                      <img src="img/elements/go.png" class="img-fluid slide-btn">
                     </div>
                   </div>
                 </div>`
@@ -76,13 +76,13 @@ function initPrestory(){
                   <div class="history-image" style="background-image: url('img/bg/summer.gif'); background-size:cover; background-position: center;"></div>
                   <div class="history-actions d-flex flex-row align-items-center justify-content-between">
                     <div class="history-button prev-slide-btn" target-slide="`+ prevSlide +`">
-                      <img src="slide btn.png" class="img-fluid slide-btn rotate-180">
+                      <img src="img/elements/slide btn.png" class="img-fluid slide-btn rotate-180">
                     </div>
                     <div class="history-text text-center">
                       <p class="mb-0 mx-5">`+v.text+`</p>
                     </div>
                     <div class="history-button next-slide-btn" target-slide="`+ nextSlide +`">
-                      <img src="slide btn.png" class="img-fluid slide-btn">
+                      <img src="img/elements/slide btn.png" class="img-fluid slide-btn">
                     </div>
                   </div>
                 </div>`
