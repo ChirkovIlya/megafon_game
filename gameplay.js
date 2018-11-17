@@ -2,7 +2,7 @@ let clickSound;
 let daySpeed = 900;
 
 let userAccount = 500;
-let userBalance = 2;
+let userBalance = 10;
 
 let currentDate = "1 апреля"; // дата в виде текста, для написания в игровом интерфейсе
 let currentDayInDate = 0; // номер дня в дате
