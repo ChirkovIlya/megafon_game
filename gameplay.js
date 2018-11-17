@@ -32,6 +32,7 @@ function initGameplay(){
     eventsArray = json.events_dates;
   })
   localStorage.setItem("choice_ids", JSON.stringify([]));
+  localStorage.setItem("balance_updates", JSON.stringify([]));
   clickSound = new sound("sounds/tap.wav");
   currentScreen = 'game';
   updateBalanceText();
@@ -81,8 +82,6 @@ function newDay(day) {
 
       $('.date-container').html('<span>'+currentDayInDate+' '+months[currentMonthCount]+'</span>');
       let eventsToday = eventsArray.filter((e)=> ((e.day == currentDayInDate) && (e.month == currentMonthCount)) )
-      // console.log()
-      // console.log(eventsToday)
       if(eventsToday.length > 0){
         let choice_ids = JSON.parse(localStorage.getItem("choice_ids"));
         $.each(eventsToday, function( index, value ) {
@@ -205,7 +204,7 @@ function openEvent(event_id){
 
 function generateEvent(eventJson){
   let html = `
-  <div class="event-container d-flex flex-column">
+  <div class="event-container d-flex flex-column" data-event-id="`+eventJson.id+`">
     <div class="event-text d-flex flex-row align-items-center justify-content-center">
       <p class="mb-0">`+eventJson.text+`</p>
     </div>
@@ -253,10 +252,10 @@ $('body').on('click', '.topup-container', function(){
     </div>
     <div class="event-buttons d-flex flex-row justify-content-around mb-5">
       <button class="top-up-event-button game-button d-flex align-items-center justify-content-center" type="button" name="button" data-balance="10">+ 10 руб.</button>
-      <button class="top-up-event-button game-button d-flex align-items-center justify-content-center" type="button" name="button" data-balance="30">+ 30 руб.</button>
+      <button class="top-up-event-button game-button d-flex align-items-center justify-content-center" type="button" name="button" data-balance="50">+ 50 руб.</button>
     </div>
     <div class="event-buttons d-flex flex-row justify-content-around">
-      <button class="top-up-event-button game-button d-flex align-items-center justify-content-center" type="button" name="button" data-balance="50">+ 50 руб.</button>
+      <button class="top-up-event-button game-button d-flex align-items-center justify-content-center" type="button" name="button" data-balance="100">+ 100 руб.</button>
       <button class="top-up-event-button game-button d-flex align-items-center justify-content-center" type="button" name="button" data-balance="0">Передумал</button>
     </div>
   </div>
@@ -267,8 +266,13 @@ $('body').on('click', '.topup-container', function(){
 
 $('body').on('click', '.top-up-event-button', function(){
   let balance = $(this).attr('data-balance');
+  let balance_updates = JSON.parse(localStorage.getItem("balance_updates"));
+  let balance_update = {};
   if(balance != 0){
+    balance_update['day'] = currentDayInDate;
+    balance_update['before'] = userBalance;
     userBalance+=parseInt(balance);
+    balance_update['after'] = userBalance;
     userAccount-=parseInt(balance);
     updateBalanceText();
     updateAccountText();
@@ -278,5 +282,10 @@ $('body').on('click', '.top-up-event-button', function(){
   if($('body .event-container').length == 0){
     eventOpened = false;
     gameTime(currentDayCount);
+    balance_update['event_id'] = "";
+  }else{
+    balance_update['event_id'] = $('body .event-container').attr('data-event-id');
   }
+  balance_updates.push(balance_update);
+  localStorage.setItem("balance_updates", JSON.stringify(balance_updates));
 })
