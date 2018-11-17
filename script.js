@@ -2,6 +2,11 @@ let $el = $("#game-container");
 let elHeight = $el.outerHeight();
 let elWidth = $el.outerWidth();
 let prestoryJson = {};
+let currentScreen = 'prestory';
+let currentSlideNumber = 0;
+var timeoutHandleToNextSlide = window.setTimeout(function() {
+    changeSlide($(".history-slide.active"), currentSlideNumber+1);
+},5000);
 
 $( document ).ready(function() {
     console.log( "ready!" );
@@ -25,9 +30,12 @@ function initResizeGameArea() {
   });
 };
 
+// Prestory functions
+
 function initPrestory(){
   $.getJSON( "json/prestory.json", function( json ) {
     console.log(json.prestory);
+    prestoryJson = json;
     $.each(json.prestory, function(i, v){
       let html;
       if(i == 0){
@@ -83,11 +91,44 @@ function initPrestory(){
   });
 }
 
+$(document).keydown(function(e) {
+  if(currentScreen == "prestory"){
+    console.log(currentScreen)
+    switch(e.key) {
+      case 'ArrowLeft': // left
+      changeSlide($(".history-slide.active"), currentSlideNumber-1);
+      break;
+
+      case 'ArrowRight': // right
+      changeSlide($(".history-slide.active"), currentSlideNumber+1);
+      break;
+
+      default: return; // exit this handler for other keys
+    }
+  }
+  e.preventDefault(); // prevent the default action (scroll / move caret)
+});
+
+function changeSlide(currentSlide, targetSlideNumber){
+  window.clearTimeout(timeoutHandleToNextSlide);
+  if((targetSlideNumber >= 0) && (prestoryJson.prestory.length-1 >= targetSlideNumber)){
+    let neededSlide = $('#history-'+targetSlideNumber);
+    currentSlideNumber = parseInt(targetSlideNumber);
+    console.log(neededSlide);
+    currentSlide.closest('.history-slide').removeClass('active');
+    neededSlide.addClass('active');
+    timeoutHandleToNextSlide = window.setTimeout(function() {
+        changeSlide($(".history-slide.active"), currentSlideNumber+1);
+    },5000);
+  }else if(prestoryJson.prestory.length-1 < targetSlideNumber){
+    currentScreen = 'game';
+    $('#history-container').fadeOut();
+  }
+}
+
 $('body').on('click', '.history-button', function(){
   let targetSlideNumber = $(this).attr('target-slide');
-  let neededSlide = $('#history-'+targetSlideNumber);
-
-  console.log(neededSlide);
-  $(this).closest('.history-slide').removeClass('active');
-  neededSlide.addClass('active');
+  changeSlide($(this), targetSlideNumber);
 })
+
+// Gameplay functions
