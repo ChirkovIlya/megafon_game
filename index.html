@@ -12,10 +12,32 @@
   <div id="game-window">
 
     <div id="game-container">
-      <div id="history-container">
+      <div class="game-stage" id="history-container">
       </div>
-      <div id="game-process-container">
-
+      <div class="game-stage" id="gameplay-container">
+        <div class="gameplay-background" style="background: url('winter-springBG.gif'); background-size: cover; background-position: center;"></div>
+        <div class="help-btn game-button d-flex align-items-center justify-content-center">
+          <span>?</span>
+        </div>
+        <div class="logout-btn game-button d-flex align-items-center justify-content-center">
+          <img src="images/door.png" alt="" class="img-fluid" width="45px">
+        </div>
+        <div class="date-container d-flex align-items-center justify-content-center">
+          <span>31 декабря</span>
+        </div>
+        <div class="balance-container d-flex align-items-center">
+          <div class="balance text-right">
+            <span class="d-block balance-title">Баланс</span>
+            <span class="d-block balance-data"><span id="balance-text">125</span> руб.</span>
+          </div>
+          <div class="account text-left">
+            <span class="d-block balance-title">Счёт</span>
+            <span class="d-block balance-data"><span id="account-text">2360</span> руб.</span>
+          </div>
+        </div>
+        <div class="topup-container game-button d-flex align-items-center justify-content-center">
+          <span>Пополнить</span>
+        </div>
       </div>
     </div>
 

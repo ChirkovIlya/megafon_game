@@ -32,7 +32,7 @@ body {
           transform-origin: center center;
 }
 
-#history-container, #game-process-container{
+.game-stage{
   position: relative;
   height: 100%;
   width: 100%;
@@ -94,4 +94,105 @@ body {
 
 .rotate-180{
   transform: rotate(180deg);
+}
+
+/* Gameplay styles*/
+
+#gameplay-container{
+  color: #0C0646;
+}
+
+
+.gameplay-background{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.help-btn{
+  top: 50px;
+  left: 50px;
+  position: absolute;
+  height: 110px;
+  width: 110px;
+  background: url('images/circle green.png');
+  background-size: cover;
+  background-position: center;
+  font-size: 50px;
+}
+.logout-btn{
+  top: 50px;
+  right: 50px;
+  position: absolute;
+  height: 110px;
+  width: 110px;
+  background: url('images/circle red.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.date-container{
+  position: absolute;
+  top: 50px;
+  right: 180px;
+  background: url('images/date container.png');
+  background-size: cover;
+  background-position: center;
+  width: 343px;
+  height: 110px;
+  opacity: .75;
+  font-size: 42px;
+}
+
+.balance-container{
+  position: absolute;
+  bottom: 200px;
+  right: 50px;
+  background: url('images/balance and account.png');
+  background-size: cover;
+  background-position: center;
+  width: 660px;
+  height: 151px;
+  opacity: .75;
+}
+
+.topup-container{
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  background: url('images/top up.png');
+  background-size: cover;
+  background-position: center;
+  width: 362px;
+  height: 116px;
+  opacity: .75;
+  font-size: 45px;
+}
+
+.game-button{
+  opacity: .75;
+  cursor: pointer;
+}
+
+.game-button:hover{
+  opacity: 1;
+}
+
+.balance{
+  position: absolute;
+  right: 355px;
+}
+
+.balance-title {
+  font-size: 30px;
+}
+
+.balance-data {
+  font-size: 50px;
+  line-height: 50px;
+}
+
+.account{
+  position: absolute;
+  left: 355px;
 }

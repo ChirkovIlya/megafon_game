@@ -4,14 +4,17 @@ let elWidth = $el.outerWidth();
 let prestoryJson = {};
 let currentScreen = 'prestory';
 let currentSlideNumber = 0;
-var timeoutHandleToNextSlide = window.setTimeout(function() {
-    changeSlide($(".history-slide.active"), currentSlideNumber+1);
-},5000);
+
+let clickSound;
+// var timeoutHandleToNextSlide = window.setTimeout(function() {
+//     changeSlide($(".history-slide.active"), currentSlideNumber+1);
+// },5000);
 
 $( document ).ready(function() {
     console.log( "ready!" );
     initResizeGameArea();
-    initPrestory();
+    // initPrestory();
+    initGameplay();
 });
 
 $( window ).resize(function() {
@@ -121,8 +124,7 @@ function changeSlide(currentSlide, targetSlideNumber){
         changeSlide($(".history-slide.active"), currentSlideNumber+1);
     },5000);
   }else if(prestoryJson.prestory.length-1 < targetSlideNumber){
-    currentScreen = 'game';
-    $('#history-container').fadeOut();
+    initGameplay()
   }
 }
 
@@ -132,3 +134,30 @@ $('body').on('click', '.history-button', function(){
 })
 
 // Gameplay functions
+
+
+function initGameplay(){
+  clickSound = new sound("tap.wav");
+  currentScreen = 'game';
+  $('#history-container').fadeOut();
+  $('#gameplay-container').fadeIn();
+}
+
+function sound(src) {
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+    this.play = function(){
+        this.sound.play();
+    }
+    this.stop = function(){
+        this.sound.pause();
+    }
+}
+
+$('body').on('click', '.game-button', function(){
+  clickSound.play();
+})
