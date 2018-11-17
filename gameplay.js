@@ -1,18 +1,18 @@
 let clickSound;
-let daySpeed = 700;
+let daySpeed = 900;
 
 let userAccount = 500;
-let userBalance = 50;
+let userBalance = 10;
 
 let currentDate = "1 апреля"; // дата в виде текста, для написания в игровом интерфейсе
-let currentDayInDate = 1; // номер дня в дате
+let currentDayInDate = 0; // номер дня в дате
 let seasonCount = 0;
 //            |-----------|--------------|-----------------|
 let months = ["апреля", "мая", "июня", "июля", "августа", "сентября"]; // названия месяцов
 let daysInMonths = [30, 31, 30, 31, 31, 30]; // кол-во дней в месяце
 let daysForBackgroundChange = [45, 61, 47] // кол-во дней в каждом сезоне
 let currentDayInSeason = 1; // номер дня, отностиельно сезона
-let currentDayCount = 1; // номер дня, относительно всей игры (1 из 183)
+let currentDayCount = 0; // номер дня, относительно всей игры (1 из 183)
 let currentMonthCount = 0; // порядковый номер текущего месяца в массиве months
 let daysTotal = 183; // кол-во дней всего
 let eventOpened = false;
@@ -22,10 +22,14 @@ var gameTimeHandler = window.setTimeout(function() {
 },daySpeed);
 
 let logsJson;
+let eventsArray;
 
 function initGameplay(){
   $.getJSON( "json/logs.json", function( json ) {
     logsJson = json;
+  })
+  $.getJSON( "json/events_dates.json", function( json ) {
+    eventsArray = json.events_dates;
   })
   localStorage.setItem("choice_ids", JSON.stringify([]));
   clickSound = new sound("sounds/tap.wav");
@@ -76,7 +80,22 @@ function newDay(day) {
       generatePassiveOutcome();
 
       $('.date-container').html('<span>'+currentDayInDate+' '+months[currentMonthCount]+'</span>');
-      if(!eventOpened){
+      let eventsToday = eventsArray.filter((e)=> ((e.day == currentDayInDate) && (e.month == currentMonthCount)) )
+      // console.log()
+      // console.log(eventsToday)
+      if(eventsToday.length > 0){
+        let choice_ids = JSON.parse(localStorage.getItem("choice_ids"));
+        $.each(eventsToday, function( index, value ) {
+          $.getJSON( "json/"+value.event_id+".json", function( json ) {
+            console.log(json);
+            if((json.prechoice_id == "") || (choice_ids.includes(json.prechoice_id))){
+              openEvent(value.event_id)
+            }else{
+              console.log('Event called, but prechoice_id is not right')
+            };
+          })
+        })
+      }else if(!eventOpened){
         gameTime(currentDayCount)
       }
     }, daySpeed);
@@ -178,7 +197,7 @@ function openEvent(event_id){
       generateEvent(json)
     })
   }else{
-    $.getJSON( "json/event_start.json", function( json ) {
+    $.getJSON( "json/"+event_id+".json", function( json ) {
       generateEvent(json)
     })
   }
@@ -256,6 +275,8 @@ $('body').on('click', '.top-up-event-button', function(){
     printLog('Баланс пополнен', '+'+balance)
   }
   $('body').find('.topup-event-container').remove()
-  eventOpened = false;
-  gameTime(currentDayCount);
+  if($('body .event-container').length == 0){
+    eventOpened = false;
+    gameTime(currentDayCount);
+  }
 })
