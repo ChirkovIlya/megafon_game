@@ -1,0 +1,20 @@
+{
+    "id": "event_sub_2_1",
+    "prechoice_id": "event_sub_2_choice_1",
+    "text": "Красота! Теперь у вас есть целый фотосет Антарктики!",
+    "buttons":
+    [
+        {
+            "text":"Запостить",
+            "balance":"0",
+            "msg":"",
+            "choice_id":""
+        },
+        {
+            "text":"Отправить маме",
+            "balance":"0",
+            "msg":"",
+            "choice_id":""
+        }
+    ]
+}

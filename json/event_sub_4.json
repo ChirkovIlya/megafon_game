@@ -1,0 +1,20 @@
+{
+    "id": "event_sub_4",
+    "prechoice_id": "",
+    "text": "Рабочий день закончился, вы уже готовитесь ко сну, но вдруг замечаете e-mail от вашего руководителя.",
+    "buttons":
+    [
+        {
+            "text":"Прочитать",
+            "balance":"0",
+            "msg":"",
+            "choice_id":"event_sub_4_choice_0"
+        },
+        {
+            "text":"Оставить на потом",
+            "balance":"0",
+            "msg":"",
+            "choice_id":"event_sub_4_choice_1"
+        }
+    ]
+}

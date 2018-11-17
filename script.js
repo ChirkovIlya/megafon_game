@@ -4,8 +4,6 @@ let elWidth = $el.outerWidth();
 let prestoryJson = {};
 let currentScreen = 'prestory';
 let currentSlideNumber = 0;
-
-let clickSound;
 // var timeoutHandleToNextSlide = window.setTimeout(function() {
 //     changeSlide($(".history-slide.active"), currentSlideNumber+1);
 // },5000);
@@ -44,7 +42,7 @@ function initPrestory(){
       if(i == 0){
         let nextSlide = i+1;
         html = `<div class="history-slide active" id="history-`+i+`">
-                  <div class="history-image" style="background-image: url('весна.jpg'); background-size:cover; background-position: center;"></div>
+                  <div class="history-image" style="background-image: url('img/bg/summer.gif'); background-size:cover; background-position: center;"></div>
                   <div class="history-actions d-flex flex-row align-items-center justify-content-between">
                     <div class="history-button opacity-0 visibility-hidden prev-slide-btn">Назад</div>
                     <div class="history-text text-center">
@@ -58,7 +56,7 @@ function initPrestory(){
       }else if (i == json.prestory.length-1) {
         let prevSlide = i-1;
         html = `<div class="history-slide" id="history-`+i+`">
-                  <div class="history-image" style="background-image: url('весна.jpg'); background-size:cover; background-position: center;"></div>
+                  <div class="history-image" style="background-image: url('img/bg/summer.gif'); background-size:cover; background-position: center;"></div>
                   <div class="history-actions d-flex flex-row align-items-center justify-content-between">
                     <div class="history-button prev-slide-btn" target-slide="`+ prevSlide +`">
                       <img src="slide btn.png" class="img-fluid slide-btn rotate-180">
@@ -75,7 +73,7 @@ function initPrestory(){
         let prevSlide = i-1;
         let nextSlide = i+1;
         html = `<div class="history-slide" id="history-`+i+`">
-                  <div class="history-image" style="background-image: url('весна.jpg'); background-size:cover; background-position: center;"></div>
+                  <div class="history-image" style="background-image: url('img/bg/summer.gif'); background-size:cover; background-position: center;"></div>
                   <div class="history-actions d-flex flex-row align-items-center justify-content-between">
                     <div class="history-button prev-slide-btn" target-slide="`+ prevSlide +`">
                       <img src="slide btn.png" class="img-fluid slide-btn rotate-180">
@@ -133,31 +131,9 @@ $('body').on('click', '.history-button', function(){
   changeSlide($(this), targetSlideNumber);
 })
 
-// Gameplay functions
 
-
-function initGameplay(){
-  clickSound = new sound("tap.wav");
-  currentScreen = 'game';
-  $('#history-container').fadeOut();
-  $('#gameplay-container').fadeIn();
+function randomInteger(min, max) {
+  var rand = min - 0.5 + Math.random() * (max - min + 1)
+  rand = Math.round(rand);
+  return rand;
 }
-
-function sound(src) {
-    this.sound = document.createElement("audio");
-    this.sound.src = src;
-    this.sound.setAttribute("preload", "auto");
-    this.sound.setAttribute("controls", "none");
-    this.sound.style.display = "none";
-    document.body.appendChild(this.sound);
-    this.play = function(){
-        this.sound.play();
-    }
-    this.stop = function(){
-        this.sound.pause();
-    }
-}
-
-$('body').on('click', '.game-button', function(){
-  clickSound.play();
-})

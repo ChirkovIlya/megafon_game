@@ -15,15 +15,21 @@
       <div class="game-stage" id="history-container">
       </div>
       <div class="game-stage" id="gameplay-container">
-        <div class="gameplay-background" style="background: url('winter-springBG.gif'); background-size: cover; background-position: center;"></div>
+        <div class="gameplay-background bg-1" data-season="0" style="background: url('img/bg/spring.gif'); background-size: cover; background-position: center;"></div>
+        <div class="gameplay-background bg-2"  data-season="1" style="background: url('img/bg/spring-summer.gif'); background-size: cover; background-position: center; opacity: 0;"></div>
+        <div class="gameplay-background bg-3"  data-season="2" style="background: url('img/bg/summer.gif'); background-size: cover; background-position: center; opacity: 0;"></div>
+        <div class="gameplay-background bg-4"  data-season="3" style="background: url('img/bg/summer-autumn.gif'); background-size: cover; background-position: center; opacity: 0;"></div>
+
         <div class="help-btn game-button d-flex align-items-center justify-content-center">
           <span>?</span>
         </div>
         <div class="logout-btn game-button d-flex align-items-center justify-content-center">
-          <img src="images/door.png" alt="" class="img-fluid" width="45px">
+          <img src="img/elements/door.png" alt="" class="img-fluid" width="45px">
         </div>
         <div class="date-container d-flex align-items-center justify-content-center">
-          <span>31 декабря</span>
+          <span>1 апреля</span>
+        </div>
+        <div class="logs-container d-flex align-items-end text-right flex-column justify-content-end">
         </div>
         <div class="balance-container d-flex align-items-center">
           <div class="balance text-right">
@@ -38,6 +44,8 @@
         <div class="topup-container game-button d-flex align-items-center justify-content-center">
           <span>Пополнить</span>
         </div>
+
+
       </div>
     </div>
 
@@ -54,5 +62,6 @@
   integrity="sha256-xNjb53/rY+WmG+4L6tTl9m6PpqknWZvRt0rO1SRnJzw="
   crossorigin="anonymous"></script>
   <script type="text/javascript" src="script.js"></script>
+  <script type="text/javascript" src="gameplay.js"></script>
 </body>
 </html>

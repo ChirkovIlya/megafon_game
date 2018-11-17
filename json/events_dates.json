@@ -1,0 +1,64 @@
+{
+    "events_dates": 
+    [
+        {"day":"1", "month": "0", "event_id": "event_start"},
+
+        {"day":"6", "month": "0", "event_id": "event_sub_0"},
+        {"day":"7", "month": "0", "event_id": "event_sub_0_0"},
+        {"day":"7", "month": "0", "event_id": "event_sub_0_1"},
+
+        {"day":"14", "month": "0", "event_id": "event_a"},
+        {"day":"19", "month": "0", "event_id": "event_a_0"},
+        {"day":"19", "month": "0", "event_id": "event_a_1"},
+        {"day":"2", "month": "1", "event_id": "event_a_0_0"},
+        {"day":"2", "month": "1", "event_id": "event_a_0_1"},
+        {"day":"2", "month": "1", "event_id": "event_a_1_0"},
+        {"day":"2", "month": "1", "event_id": "event_a_1_1"},    
+        {"day":"16", "month": "1", "event_id": "event_a_0_0_0"},
+        {"day":"16", "month": "1", "event_id": "event_a_0_0_1"},
+        {"day":"16", "month": "1", "event_id": "event_a_0_1_0"},
+        {"day":"16", "month": "1", "event_id": "event_a_0_1_1"},
+        {"day":"16", "month": "1", "event_id": "event_a_1_0_0"},
+        {"day":"16", "month": "1", "event_id": "event_a_1_0_1"},
+        {"day":"16", "month": "1", "event_id": "event_a_1_1_0"},
+        {"day":"16", "month": "1", "event_id": "event_a_1_1_1"},
+
+        {"day":"28", "month": "1", "event_id": "event_sub_1"},
+        {"day":"29", "month": "1", "event_id": "event_sub_1_0"},
+        {"day":"29", "month": "1", "event_id": "event_sub_1_1"},
+
+        {"day":"9", "month": "2", "event_id": "event_sub_2"},
+        {"day":"10", "month": "2", "event_id": "event_sub_2_0"},
+        {"day":"10", "month": "2", "event_id": "event_sub_2_1"},
+
+        {"day":"22", "month": "2", "event_id": "event_sub_3"},
+        {"day":"23", "month": "2", "event_id": "event_sub_3_0"},
+        {"day":"23", "month": "2", "event_id": "event_sub_3_1"},
+
+        {"day":"5", "month": "3", "event_id": "event_a"},
+        {"day":"14", "month": "3", "event_id": "event_a_0"},
+        {"day":"14", "month": "3", "event_id": "event_a_1"},
+        {"day":"2", "month": "4", "event_id": "event_a_0_0"},
+        {"day":"2", "month": "4", "event_id": "event_a_0_1"},
+        {"day":"2", "month": "4", "event_id": "event_a_1_0"},
+        {"day":"2", "month": "4", "event_id": "event_a_1_1"},    
+        {"day":"16", "month": "4", "event_id": "event_a_0_0_0"},
+        {"day":"16", "month": "4", "event_id": "event_a_0_0_1"},
+        {"day":"16", "month": "4", "event_id": "event_a_0_1_0"},
+        {"day":"16", "month": "4", "event_id": "event_a_0_1_1"},
+        {"day":"16", "month": "4", "event_id": "event_a_1_0_0"},
+        {"day":"16", "month": "4", "event_id": "event_a_1_0_1"},
+        {"day":"16", "month": "4", "event_id": "event_a_1_1_0"},
+        {"day":"16", "month": "4", "event_id": "event_a_1_1_1"},
+
+        {"day":"27", "month": "4", "event_id": "event_sub_4"},
+        {"day":"28", "month": "4", "event_id": "event_sub_4_0"},
+        {"day":"28", "month": "4", "event_id": "event_sub_4_1"},
+
+        {"day":"11", "month": "5", "event_id": "event_sub_5"},
+        {"day":"11", "month": "5", "event_id": "event_sub_5_0"},
+        {"day":"11", "month": "5", "event_id": "event_sub_5_1"},
+
+        {"day":"30", "month": "5", "event_id": "event_end"}
+    ]
+}

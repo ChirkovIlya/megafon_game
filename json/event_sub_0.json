@@ -1,0 +1,20 @@
+{
+    "id": "event_sub_0",
+    "prechoice_id": "",
+    "text": "Пришло время осмотреть свои владенья! Для начала поедем..",
+    "buttons":
+    [
+        {
+            "text":"..на побережье: там красиво",
+            "balance":"0",
+            "msg":"",
+            "choice_id":"event_sub_0_choice_0"
+        },
+        {
+            "text":"..на холм: там лучше обзор",
+            "balance":"0",
+            "msg":"",
+            "choice_id":"event_sub_0_choice_1"
+        }
+    ]
+}
