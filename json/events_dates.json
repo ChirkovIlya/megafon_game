@@ -1,5 +1,5 @@
 {
-    "events_dates":
+    "events_dates": 
     [
         {"day":"1", "month": "0", "event_id": "event_start"},
 
@@ -13,7 +13,7 @@
         {"day":"2", "month": "1", "event_id": "event_a_0_0"},
         {"day":"2", "month": "1", "event_id": "event_a_0_1"},
         {"day":"2", "month": "1", "event_id": "event_a_1_0"},
-        {"day":"2", "month": "1", "event_id": "event_a_1_1"},
+        {"day":"2", "month": "1", "event_id": "event_a_1_1"},    
         {"day":"16", "month": "1", "event_id": "event_a_0_0_0"},
         {"day":"16", "month": "1", "event_id": "event_a_0_0_1"},
         {"day":"16", "month": "1", "event_id": "event_a_0_1_0"},
@@ -41,7 +41,7 @@
         {"day":"2", "month": "4", "event_id": "event_b_0_0"},
         {"day":"2", "month": "4", "event_id": "event_b_0_1"},
         {"day":"2", "month": "4", "event_id": "event_b_1_0"},
-        {"day":"2", "month": "4", "event_id": "event_b_1_1"},
+        {"day":"2", "month": "4", "event_id": "event_b_1_1"},    
         {"day":"16", "month": "4", "event_id": "event_b_0_0_0"},
         {"day":"16", "month": "4", "event_id": "event_b_0_0_1"},
         {"day":"16", "month": "4", "event_id": "event_b_0_1_0"},
