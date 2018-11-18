@@ -75,13 +75,13 @@ body {
   opacity: 0;
 }
 
-.history-slide{
+.history-slide, .result-slide{
   visibility: hidden;
   opacity: 0;
   transition: visibility 0.5s, opacity 0.5s ease;
 }
 
-.history-slide.active{
+.history-slide.active, .result-slide.active{
   visibility: visible;
   opacity: 1;
 }
@@ -361,6 +361,10 @@ body {
   width: 400px;
   height: 129px;
   font-size: 45px;
+}
+
+.result-slide#result-5 .result-btn {
+  position: relative;
 }
 
 .descOfResults{

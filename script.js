@@ -5,16 +5,16 @@ let prestoryJson = {};
 let currentScreen = 'prestory';
 let currentSlideNumber = 0;
 let backgroundMusic;
-// var timeoutHandleToNextSlide = window.setTimeout(function() {
-//     changeSlide($(".history-slide.active"), currentSlideNumber+1);
-// },5000);
+var timeoutHandleToNextSlide = window.setTimeout(function() {
+    changeSlide($(".history-slide.active"), currentSlideNumber+1);
+},10000);
 
 $( document ).ready(function() {
     console.log( "ready!" );
     backgroundMusic = new sound("sounds/soundtrack.mp3");
     backgroundMusic.sound.loop = true;
     initResizeGameArea();
-    // initPrestory();
+    initPrestory();
 });
 
 $( window ).resize(function() {
@@ -122,7 +122,7 @@ function changeSlide(currentSlide, targetSlideNumber){
     neededSlide.addClass('active');
     timeoutHandleToNextSlide = window.setTimeout(function() {
         changeSlide($(".history-slide.active"), currentSlideNumber+1);
-    },5000);
+    },10000);
   }else if(prestoryJson.prestory.length-1 < targetSlideNumber){
     initGameplay()
   }
