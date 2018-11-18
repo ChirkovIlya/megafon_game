@@ -238,6 +238,12 @@ body {
   border: none;
 }
 
+.top-up-event-button.disabled{
+  opacity: 1;
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+}
+
 .game-button{
   opacity: .75;
   cursor: pointer;

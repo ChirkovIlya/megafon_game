@@ -58,7 +58,9 @@ function sound(src) {
 }
 
 $('body').on('click', '.game-button', function(){
-  clickSound.play();
+  if (!$(this).hasClass('disabled')) {
+    clickSound.play();
+  }
 })
 
 function gameTime(startDayNumber){
@@ -252,11 +254,11 @@ $('body').on('click', '.topup-container', function(){
       <p class="mb-0">Пополнить баланс со своего счёта</p>
     </div>
     <div class="event-buttons d-flex flex-row justify-content-around mb-5">
-      <button class="top-up-event-button game-button d-flex align-items-center justify-content-center" type="button" name="button" data-balance="10">+ 10 руб.</button>
-      <button class="top-up-event-button game-button d-flex align-items-center justify-content-center" type="button" name="button" data-balance="50">+ 50 руб.</button>
+      <button class="top-up-event-button game-button d-flex align-items-center justify-content-center ${userAccount < 10 ? 'disabled' : ''}" type="button" name="button" data-balance="10">+ 10 руб.</button>
+      <button class="top-up-event-button game-button d-flex align-items-center justify-content-center ${userAccount < 50 ? 'disabled' : ''}" type="button" name="button" data-balance="50">+ 50 руб.</button>
     </div>
     <div class="event-buttons d-flex flex-row justify-content-around">
-      <button class="top-up-event-button game-button d-flex align-items-center justify-content-center" type="button" name="button" data-balance="100">+ 100 руб.</button>
+      <button class="top-up-event-button game-button d-flex align-items-center justify-content-center ${userAccount < 100 ? 'disabled' : ''}" type="button" name="button" data-balance="100">+ 100 руб.</button>
       <button class="top-up-event-button game-button d-flex align-items-center justify-content-center" type="button" name="button" data-balance="0">Передумал</button>
     </div>
   </div>
@@ -268,27 +270,29 @@ $('body').on('click', '.topup-container', function(){
 
 
 $('body').on('click', '.top-up-event-button', function(){
-  let balance = $(this).attr('data-balance');
-  let balance_updates = JSON.parse(localStorage.getItem("balance_updates"));
-  let balance_update = {};
-  if(balance != 0){
-    balance_update['day'] = currentDayInDate;
-    balance_update['before'] = userBalance;
-    userBalance+=parseInt(balance);
-    balance_update['after'] = userBalance;
-    userAccount-=parseInt(balance);
-    updateBalanceText();
-    updateAccountText();
-    printLog('Баланс пополнен', '+'+balance)
+  if (!$(this).hasClass('disabled')) {
+    let balance = $(this).attr('data-balance');
+    let balance_updates = JSON.parse(localStorage.getItem("balance_updates"));
+    let balance_update = {};
+    if(balance != 0){
+      balance_update['day'] = currentDayInDate;
+      balance_update['before'] = userBalance;
+      userBalance+=parseInt(balance);
+      balance_update['after'] = userBalance;
+      userAccount-=parseInt(balance);
+      updateBalanceText();
+      updateAccountText();
+      printLog('Баланс пополнен', '+'+balance)
+    }
+    $('body').find('.topup-event-container').remove()
+    if($('body .event-container').length == 0){
+      eventOpened = false;
+      gameTime(currentDayCount);
+      balance_update['event_id'] = "";
+    }else{
+      balance_update['event_id'] = $('body .event-container').attr('data-event-id');
+    }
+    balance_updates.push(balance_update);
+    localStorage.setItem("balance_updates", JSON.stringify(balance_updates));
   }
-  $('body').find('.topup-event-container').remove()
-  if($('body .event-container').length == 0){
-    eventOpened = false;
-    gameTime(currentDayCount);
-    balance_update['event_id'] = "";
-  }else{
-    balance_update['event_id'] = $('body .event-container').attr('data-event-id');
-  }
-  balance_updates.push(balance_update);
-  localStorage.setItem("balance_updates", JSON.stringify(balance_updates));
 })
