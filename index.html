@@ -12,9 +12,9 @@
   <div id="game-window">
 
     <div id="game-container">
-      <div class="game-stage" id="history-container">
+      <div class="game-stage" id="history-container" style="display: none;">
       </div>
-      <div class="game-stage" id="gameplay-container">
+      <div class="game-stage" id="gameplay-container" style="display: none;">
         <div class="gameplay-background bg-1" data-season="0" style="background: url('img/bg/spring.gif'); background-size: cover; background-position: center;"></div>
         <div class="gameplay-background bg-2"  data-season="1" style="background: url('img/bg/spring-summer.gif'); background-size: cover; background-position: center; opacity: 0;"></div>
         <div class="gameplay-background bg-3"  data-season="2" style="background: url('img/bg/summer.gif'); background-size: cover; background-position: center; opacity: 0;"></div>
@@ -47,6 +47,51 @@
 
 
       </div>
+      <div class="game-stage text-left" id="results-container">
+        <div class="result-slide d-none" id="result-1">
+          <p class="head text-green">Вы справились..</p>
+          <p class="desc">..ваш срок Великого Смотрителя подошел к концу и вы победителем возвращаетесь домой!</p>
+          <button class="result-btn d-flex align-items-center justify-content-center" type="button" name="button" data-balance="0">А мама?</button>
+        </div>
+        <div class="result-slide d-none" id="result-2">
+          <p class="desc">За весь срок вам удалось накопить 2000 руб. и...</p>
+          <p class="head text-green">..вы купили маме робота-пылесоса "Тюлень П2"!</p>
+          <button class="result-btn d-flex align-items-center justify-content-center" type="button" name="button" data-balance="0">А ещё?</button>
+        </div>
+        <div class="result-slide d-none" id="result-3">
+          <div class="result-dog">
+            <p class="desc text-green">Пребывая в Антарктиде...</p>
+            <p class="head">..у вас не хватало времени на корги Макса, но вы уже в пути к нему!</p>
+          </div>
+          <div class="result-pinguin">
+            <p class="desc text-green">Исполняя служебный долг...</p>
+            <p class="head">..вы не вмешивались в экологию и жизнь пингвинов</p>
+          </div>
+          <button class="result-btn d-flex align-items-center justify-content-center" type="button" name="button" data-balance="0">Круто!</button>
+        </div>
+        <div class="result-slide d-none" id="result-4">
+          <p class="desc text-green">За всю игру..</p>
+          <p class="head">..вы пополнили баланс <span class="text-green">32 раз(-а)</span></p>
+          <p class="secondary-text" style="top: 50%; left: 15%;">..сколько же сил вы потратили на постоянный контроль...</p>
+          <p class="secondary-text" style="bottom: 3%; left: 30%;">..и еще мы проанализировали ваши действия..</p>
+          <button class="result-btn d-flex align-items-center justify-content-center" type="button" name="button" data-balance="0">...и что там?</button>
+        </div>
+        <div class="result-slide" id="result-5">
+          <p class="desc text-center text-green mb-5">..мы немного за вами понаблюдали..</p>
+          <div class="d-flex flex-row align-items-around" style="height: 840px;">
+            <div class="autopay-section w-100 d-flex flex-column p-3">
+              <p class="descOfResults mb-5">..вы точно знаете, чего вы хотите от жизни. Вы ставите цели и следуете плану, где ежемесячный пунктик - пополнение баланса. Мы так считаем, потому что в игре вы пополняли баланс четко в условный период месяца. Скорее всего, вы используете абонентскую плату и пополняете баланс на фиксированную сумму.</p>
+              <p class="descOfResults">И поэтому, Мегафон уже знает как вам помочь! Подключите <span class="text-green">Автоплатёж по Абонентской плате</span>: ежемесячно ваш счет будет пополняться на сумму стоимости этой услуги.</p>
+              <a href="https://megafon.ru/pay/pay_by_card/" class="result-btn d-flex align-items-center justify-content-center mx-auto mt-auto" target="_blank" name="button" data-balance="0">Подключить</a>
+            </div>
+            <div class="commerce-section w-100 d-flex flex-column p-3">
+              <p class="descOfResults mb-5">..вы точно знаете, чего вы хотите от жизни. Вы ставите цели и следуете плану, где ежемесячный пунктик - пополнение баланса. Мы так считаем, потому что в игре вы пополняли баланс четко в условный период месяца. Скорее всего, вы используете абонентскую плату и пополняете баланс на фиксированную сумму.</p>
+              <p class="descOfResults">И поэтому, Мегафон уже знает как вам помочь! Подключите <span class="text-green">Автоплатёж по Абонентской плате</span>: ежемесячно ваш счет будет пополняться на сумму стоимости этой услуги.</p>
+              <a href="https://megafon.ru/pay/pay_by_card/" class="result-btn d-flex align-items-center justify-content-center mx-auto mt-auto" target="_blank" name="button" data-balance="0">Подключить</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -63,5 +108,6 @@
   crossorigin="anonymous"></script>
   <script type="text/javascript" src="script.js"></script>
   <script type="text/javascript" src="gameplay.js"></script>
+  <script type="text/javascript" src="result.js"></script>
 </body>
 </html>

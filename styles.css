@@ -279,3 +279,98 @@ body {
 .logs-container p:nth-child(2){
   opacity: .5;
 }
+
+/* results styles*/
+
+#results-container{
+  color: #0C0646;
+  background: white;
+}
+
+.text-green{
+  color: #00A564;
+}
+
+.result-slide{
+  height: 100%;
+  padding: 50px;
+}
+
+.result-slide#result-1 .head{
+  font-size: 195px;
+  line-height: 250px;
+  margin-top: 40px;
+}
+
+.result-slide#result-1 .desc{
+  font-size: 60px;
+}
+
+.result-slide#result-2 .desc{
+  font-size: 75px;
+  margin-top: 75px;
+}
+
+.result-slide#result-2 .head{
+  font-size: 115px;
+}
+
+.result-slide#result-3 .desc{
+  font-size: 60px;
+  margin-top: 75px;
+}
+
+.result-slide#result-3 .head{
+  font-size: 80px;
+}
+
+.result-slide#result-4 .desc{
+  font-size: 80px;
+  margin-top: 75px;
+}
+
+.result-slide#result-4 .head{
+  font-size: 90px;
+}
+
+.result-slide#result-4 .secondary-text{
+  position: absolute;
+  width: 830px;
+  font-size: 45px;
+}
+
+.result-slide#result-5 .desc{
+  font-size: 75px;
+}
+
+.result-btn{
+  background: url('img/elements/top up.png');
+  background-size: cover;
+  background-position: center;
+  width: 362px;
+  height: 116px;
+  font-size: 60px;
+  border:0;
+  opacity: .75;
+  cursor: pointer;
+  transition: opacity .5s ease;
+  color: #0C0646 !important;
+}
+
+.result-slide#result-4 .result-btn, .result-slide#result-5 .result-btn{
+  width: 400px;
+  height: 129px;
+  font-size: 45px;
+}
+
+.descOfResults{
+  font-size: 30px;
+}
+
+.commerce-section{
+  border-left: 2px solid #00A564;
+}
+
+.result-btn:hover{
+  opacity: 1;
+}

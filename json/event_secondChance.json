@@ -8,13 +8,13 @@
             "text":"Больше не буду.. (+50 руб.)",
             "balance":"50",
             "msg":"Мама пополнила ваш баланс",
-            "choice_id":""
+            "choice_id":"event_secondChance_choice_0"
         },
         {
             "text":"Зато я куплю ей подарок по возвращению! (+50 руб.)",
             "balance":"50",
             "msg":"Мама пополнила ваш баланс",
-            "choice_id":""
+            "choice_id":"event_secondChance_choice_0"
         }
     ]
 }

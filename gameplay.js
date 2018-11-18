@@ -1,5 +1,5 @@
 let clickSound;
-let daySpeed = 900;
+let daySpeed = 650;
 
 let userAccount = 500;
 let userBalance = 10;
@@ -7,7 +7,7 @@ let userBalance = 10;
 let currentDate = "1 апреля"; // дата в виде текста, для написания в игровом интерфейсе
 let currentDayInDate = 0; // номер дня в дате
 let seasonCount = 0;
-//            |-----------|--------------|-----------------|
+
 let months = ["апреля", "мая", "июня", "июля", "августа", "сентября"]; // названия месяцов
 let daysInMonths = [30, 31, 30, 31, 31, 30]; // кол-во дней в месяце
 let daysForBackgroundChange = [45, 61, 47] // кол-во дней в каждом сезоне
@@ -23,9 +23,6 @@ let logsJson;
 let eventsArray;
 
 function initGameplay(){
-  gameTimeHandler = window.setTimeout(function() {
-      gameTime(currentDayCount);
-  },daySpeed);
   $.getJSON( "json/logs.json", function( json ) {
     logsJson = json;
   })
@@ -38,8 +35,14 @@ function initGameplay(){
   currentScreen = 'game';
   updateBalanceText();
   updateAccountText();
-  $('#history-container').fadeOut();
-  $('#gameplay-container').fadeIn();
+  $('#history-container').fadeOut(500).promise().done(function(){
+    $('#gameplay-container').fadeIn(500);
+    gameTimeHandler = window.setTimeout(function() {
+        gameTime(currentDayCount);
+    },daySpeed);
+  });
+  // $('#history-container').fadeOut();
+  // $('#gameplay-container').fadeIn();
 }
 
 function sound(src) {
@@ -68,7 +71,7 @@ function gameTime(startDayNumber){
     window.clearTimeout(gameTimeHandler);
     newDay(startDayNumber+1)
   }else{
-    console.log('the end')
+    calcResults(userAccount);
   }
 }
 
@@ -105,8 +108,10 @@ function newDay(day) {
 
 
 $('body').on('click', '.logout-btn', function(){
-  console.log('click pause');
-  window.clearTimeout(gameTimeHandler);
+  if(!eventOpened){
+    window.clearTimeout(gameTimeHandler);
+    openEvent('event_exit');
+  }
 });
 $('body').on('click', '.help-btn', function(){
   console.log('click continue');
@@ -223,7 +228,7 @@ $('body').on('click', '.event-button', function(){
   let balance = $(this).attr('data-balance');
   let msg = $(this).attr('data-msg');
   let choice_id = $(this).attr('data-choice_id');
-  console.log(balance, msg, choice_id);
+  let event_id = $(this).closest('.event-container').attr('data-event-id');
   if(balance){
     userBalance+=parseInt(balance);
     updateBalanceText();
@@ -241,8 +246,12 @@ $('body').on('click', '.event-button', function(){
     localStorage.setItem("choice_ids", JSON.stringify(choice_ids));
   }
   $('body').find('.event-container').remove()
-  eventOpened = false;
-  gameTime(currentDayCount);
+  if(choice_id == 'event_exit_choice_0'){
+    calcResults(userAccount);
+  }else{
+    eventOpened = false;
+    gameTime(currentDayCount);
+  }
 })
 
 $('body').on('click', '.topup-container', function(){
@@ -263,9 +272,9 @@ $('body').on('click', '.topup-container', function(){
     </div>
   </div>
   `
-  if($('body .topup-event-container').length == 0){
+  // if($('body .topup-event-container').length == 0){
     $('#gameplay-container').append(html);
-  }
+  // }
 })
 
 
@@ -277,8 +286,8 @@ $('body').on('click', '.top-up-event-button', function(){
     if(balance != 0){
       balance_update['day'] = currentDayInDate;
       balance_update['before'] = userBalance;
+      balance_update['diff'] = balance;
       userBalance+=parseInt(balance);
-      balance_update['after'] = userBalance;
       userAccount-=parseInt(balance);
       updateBalanceText();
       updateAccountText();
@@ -292,7 +301,9 @@ $('body').on('click', '.top-up-event-button', function(){
     }else{
       balance_update['event_id'] = $('body .event-container').attr('data-event-id');
     }
-    balance_updates.push(balance_update);
-    localStorage.setItem("balance_updates", JSON.stringify(balance_updates));
+    if(balance != 0){
+      balance_updates.push(balance_update);
+      localStorage.setItem("balance_updates", JSON.stringify(balance_updates));
+    }
   }
 })
