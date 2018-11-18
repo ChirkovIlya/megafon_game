@@ -4,15 +4,17 @@ let elWidth = $el.outerWidth();
 let prestoryJson = {};
 let currentScreen = 'prestory';
 let currentSlideNumber = 0;
+let backgroundMusic;
 var timeoutHandleToNextSlide = window.setTimeout(function() {
     changeSlide($(".history-slide.active"), currentSlideNumber+1);
 },5000);
 
 $( document ).ready(function() {
     console.log( "ready!" );
+    backgroundMusic = new sound("sounds/soundtrack.mp3");
+    backgroundMusic.sound.loop = true;
     initResizeGameArea();
     initPrestory();
-    // initGameplay();
 });
 
 $( window ).resize(function() {
@@ -94,7 +96,7 @@ function initPrestory(){
 
 $(document).keydown(function(e) {
   if(currentScreen == "prestory"){
-    console.log(currentScreen)
+    backgroundMusic.play();
     switch(e.key) {
       case 'ArrowLeft': // left
       changeSlide($(".history-slide.active"), currentSlideNumber-1);
@@ -127,6 +129,7 @@ function changeSlide(currentSlide, targetSlideNumber){
 }
 
 $('body').on('click', '.history-button', function(){
+  backgroundMusic.play();
   let targetSlideNumber = $(this).attr('target-slide');
   changeSlide($(this), targetSlideNumber);
 })

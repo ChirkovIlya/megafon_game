@@ -249,7 +249,7 @@ $('body').on('click', '.topup-container', function(){
   let html = `
   <div class="topup-event-container d-flex flex-column">
     <div class="event-text d-flex flex-row align-items-center justify-content-center">
-      <p class="mb-0">Пополнить баланс</p>
+      <p class="mb-0">Пополнить баланс со своего счёта</p>
     </div>
     <div class="event-buttons d-flex flex-row justify-content-around mb-5">
       <button class="top-up-event-button game-button d-flex align-items-center justify-content-center" type="button" name="button" data-balance="10">+ 10 руб.</button>
@@ -261,7 +261,9 @@ $('body').on('click', '.topup-container', function(){
     </div>
   </div>
   `
-  $('#gameplay-container').append(html);
+  if($('body .topup-event-container').length == 0){
+    $('#gameplay-container').append(html);
+  }
 })
 
 
