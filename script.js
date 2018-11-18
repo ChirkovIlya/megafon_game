@@ -7,7 +7,14 @@ let currentSlideNumber = 0;
 let backgroundMusic;
 var timeoutHandleToNextSlide = window.setTimeout(function() {
     changeSlide($(".history-slide.active"), currentSlideNumber+1);
-},10000);
+},20000);
+
+$(window).on('load', function() {
+  setTimeout(function(){
+    $('.preloader').fadeOut(1000);
+  }, 7000);
+});
+
 
 $( document ).ready(function() {
     console.log( "ready!" );
@@ -122,7 +129,7 @@ function changeSlide(currentSlide, targetSlideNumber){
     neededSlide.addClass('active');
     timeoutHandleToNextSlide = window.setTimeout(function() {
         changeSlide($(".history-slide.active"), currentSlideNumber+1);
-    },10000);
+    },20000);
   }else if(prestoryJson.prestory.length-1 < targetSlideNumber){
     initGameplay()
   }

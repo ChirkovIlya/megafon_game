@@ -32,6 +32,60 @@ body {
           transform-origin: center center;
 }
 
+.preloader{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: #00A564;
+  z-index: 100;
+}
+
+.circle-white{
+  width:75px;
+  height: 75px;
+  background: white;
+  border-radius: 50%;
+  margin: 15px;
+  animation: zoom 5s infinite;
+  transform: scale(0);
+  anim
+}
+
+.circle-purple{
+  width:75px;
+  height: 75px;
+  background: #741D81;
+  border-radius: 50%;
+  margin: 15px;
+  animation: zoom 5s infinite;
+  transform: scale(0);
+}
+
+.circle-2{
+  animation-delay: .3s
+}
+
+.circle-3{
+  animation-delay: .6s
+}
+
+@keyframes zoom {
+  0%   {transform: scale(0);}
+  12.5%   {transform: scale(1);}
+  25%  {transform: scale(1);}
+  37.5%   {transform: scale(1.2);}
+  50%  {transform: scale(1);}
+  75%  {transform: scale(1);}
+  100% {transform: scale50);}
+}
+
+.circles{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%)
+}
+
 .game-stage{
   position: relative;
   height: 100%;
@@ -294,6 +348,8 @@ body {
 .result-slide{
   height: 100%;
   padding: 50px;
+  width: 100%;
+  position: absolute;
 }
 
 .result-slide#result-1 .head{
@@ -355,6 +411,9 @@ body {
   cursor: pointer;
   transition: opacity .5s ease;
   color: #0C0646 !important;
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
 }
 
 .result-slide#result-4 .result-btn, .result-slide#result-5 .result-btn{
@@ -377,4 +436,43 @@ body {
 
 .result-btn:hover{
   opacity: 1;
+}
+
+
+.pinguin-image {
+    position: absolute;
+    right: 800px;
+    bottom: 200px;
+    height: 100px;
+}
+
+img.img-fluid.ping1.pinguin-image {
+    right: 1000px;
+    bottom: 150px;
+}
+
+img.img-fluid.ping2.pinguin-image {
+    left: 100px;
+    bottom: 150px;
+}
+
+img.img-fluid.ping3.pinguin-image {
+    right: 450px;
+    bottom: 50px;
+}
+
+img.img-fluid.ping4.pinguin-image {
+    right: 890px;
+    bottom: 50px;
+}
+
+img.img-fluid.ping5.pinguin-image {
+    right: 1300px;
+    bottom: 215px;
+}
+
+.ping6{
+  right: 1450px;
+  bottom: 518px;
+  height: 80px;
 }

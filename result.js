@@ -21,20 +21,30 @@ function calcResults(userAccount){
 
 function isGameStoped(){
   let result;
+  let choice_ids = JSON.parse(localStorage.getItem("choice_ids"));
   if(choice_ids.includes('event_exit_choice_0')){
     result = resultsJson.main[1];
+    let html=
+    `
+    <div class="result-slide active" id="result-1">
+      <p class="head text-green">`+result.head+`</p>
+      <p class="desc">`+result.text+`</p>
+      <button class="result-btn d-flex align-items-center justify-content-center" type="button" name="button" data-nextSlide="2">А мама?</button>
+    </div>
+    `
+    $('#results-container').append(html);
   }else{
     result = resultsJson.main[0];
+    let html=
+    `
+    <div class="result-slide active" id="result-1">
+      <p class="head text-green">`+result.head+`</p>
+      <p class="desc">`+result.text+`</p>
+      <button class="result-btn d-flex align-items-center justify-content-center" type="button" name="button" data-nextSlide="2">А мама?</button>
+    </div>
+    `
+    $('#results-container').append(html);
   }
-  let html=
-  `
-  <div class="result-slide active" id="result-1">
-    <p class="head text-green">`+result.head+`</p>
-    <p class="desc">`+result.text+`</p>
-    <button class="result-btn d-flex align-items-center justify-content-center" type="button" name="button" data-nextSlide="2">А мама?</button>
-  </div>
-  `
-  $('#results-container').append(html);
 }
 
 function calcPresent(){
@@ -69,6 +79,7 @@ function getConclusionOfStories(){
   let resultB;
   let event_a = resultsJson.event_a;
   let event_b = resultsJson.event_b;
+  let choice_ids = JSON.parse(localStorage.getItem("choice_ids"));
   event_a.forEach(function(i){
     i.choices.forEach(function(choice){
       if(choice_ids.includes(choice)){
@@ -124,10 +135,22 @@ function getConclusionOfStories(){
     </div>
     `
     $('#results-container').append(html);
+  }else{
+    let html=
+    `
+    <div class="result-slide" id="result-3">
+      <div class="result-pinguin">
+        <p class="desc text-green">Вы не приняли участие ни в одной сюжетной линии</p>
+      </div>
+      <button class="result-btn d-flex align-items-center justify-content-center" type="button" name="button" data-nextSlide="4">Круто!</button>
+    </div>
+    `
+    $('#results-container').append(html);
   }
 }
 
 function balanceIncreaseCount(){
+  let balance_updates = JSON.parse(localStorage.getItem("balance_updates"));
   let html =
   `
   <div class="result-slide" id="result-4">
@@ -145,6 +168,8 @@ function autopayAnalyze(){
   let texts = resultsJson.autopay.texts;
   let showCommerce = false;
   let result;
+  let choice_ids = JSON.parse(localStorage.getItem("choice_ids"));
+  let balance_updates = JSON.parse(localStorage.getItem("balance_updates"));
   if(balance_updates.length < resultsJson.autopay.deltaCounts){
     if(choice_ids.includes(resultsJson.autopay.events_secondChance)){
       result = texts[7];

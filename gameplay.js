@@ -1,5 +1,5 @@
 let clickSound;
-let daySpeed = 650;
+let daySpeed = 750;
 
 let userAccount = 500;
 let userBalance = 10;
@@ -112,10 +112,6 @@ $('body').on('click', '.logout-btn', function(){
     window.clearTimeout(gameTimeHandler);
     openEvent('event_exit');
   }
-});
-$('body').on('click', '.help-btn', function(){
-  console.log('click continue');
-  gameTime(currentDayCount);
 });
 
 

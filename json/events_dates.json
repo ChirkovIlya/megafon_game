@@ -27,6 +27,8 @@
         {"day":"29", "month": "1", "event_id": "event_sub_1_0"},
         {"day":"29", "month": "1", "event_id": "event_sub_1_1"},
 
+        {"day":"4", "month:":"2", "event_id": "event_hint_exit"},
+
         {"day":"9", "month": "2", "event_id": "event_sub_2"},
         {"day":"10", "month": "2", "event_id": "event_sub_2_0"},
         {"day":"10", "month": "2", "event_id": "event_sub_2_1"},
